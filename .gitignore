@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+
+# Uploaded files
+uploads/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+# Local database and embedding cache
+/data/
+backend/data/
+chroma_db/
+tests/api_test.db

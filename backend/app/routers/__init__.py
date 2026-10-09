@@ -1,0 +1,1 @@
+from app.models import Contract, Clause, Finding

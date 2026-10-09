@@ -1,0 +1,4 @@
+# Optional semantic retrieval and vector-store dependencies.
+# The deterministic API works without these packages.
+sentence-transformers==3.4.1
+chromadb==0.6.3

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ClauseGuard AI — Contract Intelligence
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            C
+        </div>
+
+        <div>
+
+            <h1>
+                ClauseGuard
+            </h1>
+
+            <span>
+                Contract Intelligence
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <a
+            class="nav-item"
+            href="upload.html"
+            style="text-decoration:none;"
+        >
+
+            <span>↑</span>
+
+            Upload Contract
+
+        </a>
+
+
+        <a
+            class="nav-item active"
+            href="index.html"
+            style="text-decoration:none;"
+        >
+
+            <span>◈</span>
+
+            Dashboard
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="#risk-analysis"
+            style="text-decoration:none;"
+        >
+
+            <span>⚠</span>
+
+            Risk Analysis
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="#obligation-section"
+            style="text-decoration:none;"
+        >
+
+            <span>✓</span>
+
+            Obligations
+
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="comparison.html"
+            style="text-decoration:none;"
+        >
+
+            <span>⇄</span>
+
+            Version Comparison
+
+        </a>
+
+    
+        <a class="nav-item" href="playbook.html" style="text-decoration:none;">
+            <span>▤</span>
+            Playbook Rules
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <div>
+
+                <strong id="systemStatus">
+                    System Online
+                </strong>
+
+                <small id="systemStatusText">
+                    Backend connected
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="disclaimer">
+
+            Internal contract analysis only.
+
+            <br>
+
+            Not legal advice.
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="eyebrow">
+                EVIDENCE-GROUNDED CONTRACT INTELLIGENCE
+            </p>
+
+
+            <h2 id="contractName">
+                Loading contract...
+            </h2>
+
+
+            <p
+                class="subtitle"
+                id="contractMeta"
+            >
+                Connecting to backend...
+            </p>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <span
+                class="version-badge"
+                id="versionBadge"
+            >
+                V1
+            </span>
+
+
+            <button
+                class="secondary-button"
+                type="button"
+                onclick="refreshDashboard()"
+            >
+
+                ↻ Refresh
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PRODUCT MESSAGE
+    ====================================================== -->
+
+    <section class="product-message">
+
+        <div class="product-message-icon">
+            ✓
+        </div>
+
+
+        <div>
+
+            <strong>
+                We don't just summarize contracts. We prove where the risk comes from.
+            </strong>
+
+
+            <span>
+                Every finding is connected to source evidence and a configured playbook rule.
+            </span>
+
+        </div>
+
+    </section>
+
+    <section class="review-toolbar card" aria-label="Review actions">
+        <div class="review-toolbar-copy">
+            <strong>Review workspace</strong>
+            <span>Evidence-first analysis · Human review remains in control</span>
+        </div>
+        <div class="review-toolbar-actions">
+            <button type="button" class="secondary-button" id="loadDemoButton">Load demo agreement</button>
+            <button type="button" class="secondary-button" id="exportReportButton">Export PDF report</button>
+            <button type="button" class="secondary-button" id="exportObligationsButton">Export obligations CSV</button>
+            <button type="button" class="secondary-button" id="refreshAuditButton">Refresh activity</button>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         RISK SUMMARY
+    ====================================================== -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- OVERALL RISK -->
+
+        <div class="card risk-indicator-card">
+
+            <div class="card-label">
+                OVERALL RISK INDICATOR
+            </div>
+
+
+            <div class="risk-indicator-wrapper">
+
+                <div>
+
+                    <div
+                        id="riskIndicator"
+                        class="risk-indicator"
+                    >
+                        ...
+                    </div>
+
+
+                    <p class="risk-points">
+
+                        Risk points:
+
+                        <strong id="riskPoints">
+                            —
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="risk-progress-container">
+
+                    <div
+                        id="riskProgress"
+                        class="risk-progress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <p class="risk-disclaimer">
+
+                Internal contract analysis indicator only;
+                not legal advice.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- HIGH RISK -->
+
+        <div class="card metric-card">
+
+            <span class="metric-label">
+                HIGH RISK
+            </span>
+
+
+            <strong
+                id="highRisk"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span class="metric-description">
+                Critical findings
+            </span>
+
+        </div>
+
+
+
+        <!-- RISKY -->
+
+        <div class="card metric-card">
+
+            <span class="metric-label">
+                RISKY FINDINGS
+            </span>
+
+
+            <strong
+                id="riskyFindings"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span class="metric-description">
+                Playbook deviations
+            </span>
+
+        </div>
+
+
+
+        <!-- STANDARD -->
+
+        <div class="card metric-card">
+
+            <span class="metric-label">
+                STANDARD
+            </span>
+
+
+            <strong
+                id="standardFindings"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span class="metric-description">
+                Requirements satisfied
+            </span>
+
+        </div>
+
+
+
+        <!-- AMBIGUOUS -->
+
+        <div class="card metric-card">
+
+            <span class="metric-label">
+                AMBIGUOUS
+            </span>
+
+
+            <strong
+                id="ambiguousFindings"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span class="metric-description">
+                Requires review
+            </span>
+
+        </div>
+
+
+
+        <!-- MISSING -->
+
+        <div class="card metric-card">
+
+            <span class="metric-label">
+                MISSING
+            </span>
+
+
+            <strong
+                id="missingFindings"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span class="metric-description">
+                Required clauses absent
+            </span>
+
+        </div>
+
+
+
+        <!-- TRACEABILITY -->
+
+        <div class="card metric-card traceability-card">
+
+            <span class="metric-label">
+                TRACEABILITY
+            </span>
+
+
+            <strong
+                id="evidenceCoverage"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+
+            <span
+                id="traceabilityCount"
+                class="metric-description"
+            >
+                Evidence coverage
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RISK ANALYSIS
+    ====================================================== -->
+
+    <section
+        class="content-grid"
+        id="risk-analysis"
+    >
+
+
+        <!-- RISK DISTRIBUTION -->
+
+        <div class="card chart-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="card-label">
+                        RISK DISTRIBUTION
+                    </span>
+
+
+                    <h3>
+                        Contract Risk Profile
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="riskChart"></canvas>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TOP RISKS -->
+
+        <div class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="card-label">
+                        PRIORITY FINDINGS
+                    </span>
+
+
+                    <h3>
+                        Top Risks
+                    </h3>
+
+                </div>
+
+
+                <span
+                    id="riskCount"
+                    class="count-badge"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="finding-filters">
+                <input id="findingSearch" type="search" placeholder="Search findings or rules…" aria-label="Search findings">
+                <select id="findingStatusFilter" aria-label="Filter by finding status">
+                    <option value="ALL">All statuses</option><option value="RISKY">Risky</option><option value="MISSING">Missing</option><option value="AMBIGUOUS">Ambiguous</option><option value="CONFLICTING">Conflicting</option><option value="STANDARD">Standard</option>
+                </select>
+                <select id="findingSeverityFilter" aria-label="Filter by severity">
+                    <option value="ALL">All severity</option><option value="HIGH">High</option><option value="MEDIUM">Medium</option><option value="LOW">Low</option>
+                </select>
+            </div>
+
+            <div
+                id="topRisks"
+                class="risk-list"
+            >
+
+                <div class="loading">
+                    Loading findings...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EVIDENCE TRACEABILITY
+    ====================================================== -->
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    EVIDENCE TRACEABILITY
+                </span>
+
+
+                <h3>
+                    Contract → Playbook → Assessment
+                </h3>
+
+            </div>
+
+
+            <span class="traceability-badge">
+                ✓ SOURCE GROUNDED
+            </span>
+
+        </div>
+
+
+        <div
+            id="tracePanel"
+            class="trace-panel"
+        >
+
+            <div class="trace-empty">
+
+                <div class="trace-icon">
+                    ↗
+                </div>
+
+
+                <h4>
+                    Select a finding
+                </h4>
+
+
+                <p>
+
+                    Click "View Evidence" on a risk above
+                    to see the exact contract evidence,
+                    playbook rule, expected value,
+                    actual value and recommended action.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         OBLIGATIONS
+    ====================================================== -->
+
+    <section
+        class="card"
+        id="obligation-section"
+    >
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    OBLIGATION INTELLIGENCE
+                </span>
+
+
+                <h3>
+                    Contract Obligations
+                </h3>
+
+            </div>
+
+
+            <span
+                id="obligationCount"
+                class="count-badge"
+            >
+                0
+            </span>
+
+        </div>
+
+
+        <div
+            id="obligations"
+            class="obligation-list"
+        >
+
+            <div class="loading">
+                Loading obligations...
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VERSION COMPARISON
+    ====================================================== -->
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    CHANGE INTELLIGENCE
+                </span>
+
+
+                <h3>
+                    Contract Version Impact
+                </h3>
+
+            </div>
+
+
+            <a
+                href="comparison.html"
+                class="secondary-button"
+                style="text-decoration:none;"
+            >
+                Open Comparison →
+            </a>
+
+        </div>
+
+
+        <div
+            id="comparison"
+            class="comparison-container"
+        >
+
+            <div class="comparison-placeholder">
+
+                <div>
+
+                    <strong>
+                        Compare contract versions
+                    </strong>
+
+
+                    <span>
+                        See whether contract changes reduced,
+                        preserved or increased identified risks.
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="comparison.html"
+                    class="secondary-button"
+                    style="text-decoration:none;"
+                >
+                    Compare V1 → V2
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="card audit-card" id="audit-section">
+        <div class="section-header">
+            <div><span class="card-label">REVIEW HISTORY</span><h3>Audit trail</h3></div>
+            <span class="count-badge" id="auditCount">0</span>
+        </div>
+        <p class="audit-intro">Uploads, analysis runs, reviewer decisions and report exports are recorded for this contract.</p>
+        <div id="auditTimeline" class="audit-timeline"><div class="loading">Loading activity…</div></div>
+    </section>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <span>
+            ClauseGuard AI
+        </span>
+
+
+        <span>
+            Evidence-grounded contract intelligence
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     DASHBOARD JAVASCRIPT
+========================================================= -->
+
+<script src="auth-guard.js"></script>
+<script src="app.js"></script>
+
+
+
+<!-- =========================================================
+     SMOOTH NAVIGATION
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const navLinks =
+            document.querySelectorAll(
+                ".navigation .nav-item"
+            );
+
+
+        navLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        const href =
+                            link.getAttribute("href");
+
+
+                        if (
+                            href &&
+                            href.startsWith("#")
+                        ) {
+
+                            navLinks.forEach(
+                                function (item) {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            link.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

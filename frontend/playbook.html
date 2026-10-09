@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClauseGuard — Playbook Rules</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px;margin-top:20px}
+    .rule-editor{background:var(--card,#111b1a);border:1px solid var(--border,#253432);border-radius:16px;padding:20px}
+    .rule-editor label{display:block;font-size:12px;font-weight:700;margin:12px 0 6px;color:var(--muted,#9eaeaa)}
+    .rule-editor input,.rule-editor textarea,.rule-editor select{width:100%;box-sizing:border-box;border:1px solid var(--border,#354744);border-radius:8px;background:#0b1312;color:inherit;padding:10px;font:inherit}
+    .rule-editor textarea{min-height:78px;resize:vertical}.rule-id{font-size:11px;color:#6fa8ff;font-weight:800;letter-spacing:.08em}.rule-editor button{margin-top:14px}.notice{margin-top:12px;font-size:12px;color:#27d17f}.page-head{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-icon">C</div><div><h1>ClauseGuard</h1><span>Contract Intelligence</span></div></div>
+    <nav class="navigation">
+      <a class="nav-item" href="index.html" style="text-decoration:none">◈ Dashboard</a>
+      <a class="nav-item" href="upload.html" style="text-decoration:none">↑ Upload Contract</a>
+      <a class="nav-item" href="comparison.html" style="text-decoration:none">⇄ Version Comparison</a>
+      <a class="nav-item active" href="playbook.html" style="text-decoration:none">▤ Playbook Rules</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="disclaimer">Playbook changes affect future analysis. Re-analyze existing contracts after editing rules.<br><br>Not legal advice.</div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar page-head"><div><p class="eyebrow">REVIEW CONFIGURATION</p><h2>Playbook Rules</h2><p class="subtitle">Inspect and edit the requirements used by the deterministic review engine.</p></div><button id="refreshRules" type="button">Refresh rules</button></header>
+    <div id="pageStatus" role="status" aria-live="polite"></div>
+    <section id="ruleGrid" class="rule-grid" aria-label="Playbook rules"></section>
+  </main>
+  <script src="auth-guard.js"></script>
+<script src="playbook.js"></script>
+</body>
+</html>

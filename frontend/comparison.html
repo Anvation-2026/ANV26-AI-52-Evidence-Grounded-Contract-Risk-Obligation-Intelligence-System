@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ClauseGuard AI — Change Intelligence</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            C
+        </div>
+
+        <div>
+            <h1>ClauseGuard</h1>
+            <span>Contract Intelligence</span>
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <a
+            class="nav-item"
+            href="upload.html"
+            style="text-decoration:none;"
+        >
+            <span>↑</span>
+            Upload Contract
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="index.html"
+            style="text-decoration:none;"
+        >
+            <span>◈</span>
+            Dashboard
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="index.html#risk-analysis"
+            style="text-decoration:none;"
+        >
+            <span>⚠</span>
+            Risk Analysis
+        </a>
+
+
+        <a
+            class="nav-item"
+            href="index.html#obligation-section"
+            style="text-decoration:none;"
+        >
+            <span>✓</span>
+            Obligations
+        </a>
+
+
+        <a
+            class="nav-item active"
+            href="comparison.html"
+            style="text-decoration:none;"
+        >
+            <span>⇄</span>
+            Version Comparison
+        </a>
+
+    
+        <a class="nav-item" href="playbook.html" style="text-decoration:none;">
+            <span>▤</span>
+            Playbook Rules
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <div>
+
+                <strong id="systemStatus">
+                    System Online
+                </strong>
+
+                <small id="systemStatusText">
+                    Backend connected
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="disclaimer">
+
+            Internal contract analysis only.
+            <br>
+            Not legal advice.
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="eyebrow">
+                EVIDENCE-GROUNDED CONTRACT INTELLIGENCE
+            </p>
+
+            <h2>
+                Change Intelligence
+            </h2>
+
+            <p class="subtitle">
+                Determine whether contract changes reduce,
+                increase or preserve identified risk.
+            </p>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <button
+                id="refreshComparison"
+                class="secondary-button"
+                type="button"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         PRODUCT MESSAGE
+    ====================================================== -->
+
+    <section class="product-message">
+
+        <div class="product-message-icon">
+            ⇄
+        </div>
+
+
+        <div>
+
+            <strong>
+                Don't just detect what changed.
+                Determine whether the change improved the risk.
+            </strong>
+
+            <span>
+                ClauseGuard evaluates contract versions
+                against the same internal playbook rules
+                used during initial review.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VERSION SELECTORS
+    ====================================================== -->
+
+    <section class="card comparison-selector-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    CONTRACT VERSIONS
+                </span>
+
+                <h3>
+                    Select versions to compare
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="version-selector-grid">
+
+            <div class="version-selector">
+
+                <label for="v1Selector">
+                    VERSION 1
+                </label>
+
+                <select
+                    id="v1Selector"
+                >
+                    <option value="">
+                        Loading contracts...
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="comparison-arrow-large">
+                →
+            </div>
+
+
+            <div class="version-selector">
+
+                <label for="v2Selector">
+                    VERSION 2
+                </label>
+
+                <select
+                    id="v2Selector"
+                >
+                    <option value="">
+                        Loading contracts...
+                    </option>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="selectorMessage"
+            class="selector-message"
+        >
+            Loading available contract versions...
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHANGE SUMMARY
+    ====================================================== -->
+
+    <section class="comparison-kpi-grid">
+
+        <div class="card comparison-kpi">
+
+            <span class="metric-label">
+                CHANGES DETECTED
+            </span>
+
+            <strong
+                id="changesDetected"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+            <span class="metric-description">
+                Material version changes
+            </span>
+
+        </div>
+
+
+        <div class="card comparison-kpi risk-increased-card">
+
+            <span class="metric-label">
+                RISK INCREASED
+            </span>
+
+            <strong
+                id="riskIncreased"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+            <span class="metric-description">
+                New or worsened risks
+            </span>
+
+        </div>
+
+
+        <div class="card comparison-kpi risk-reduced-card">
+
+            <span class="metric-label">
+                RISK REDUCED
+            </span>
+
+            <strong
+                id="riskReduced"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+            <span class="metric-description">
+                Risks resolved or reduced
+            </span>
+
+        </div>
+
+
+        <div class="card comparison-kpi">
+
+            <span class="metric-label">
+                NO MATERIAL CHANGE
+            </span>
+
+            <strong
+                id="unchangedCount"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+            <span class="metric-description">
+                No material risk impact
+            </span>
+
+        </div>
+
+
+        <div class="card comparison-kpi improvement-card">
+
+            <span class="metric-label">
+                NET RISK IMPACT
+            </span>
+
+            <strong
+                id="netRiskImpact"
+                class="metric-value"
+            >
+                —
+            </strong>
+
+            <span class="metric-description">
+                Overall playbook impact
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OVERALL RESULT
+    ====================================================== -->
+
+    <section
+        id="overallResult"
+        class="card overall-comparison-card"
+    >
+
+        <div class="overall-result-icon">
+            ✓
+        </div>
+
+
+        <div>
+
+            <span class="card-label">
+                OVERALL CHANGE IMPACT
+            </span>
+
+            <h3 id="overallResultTitle">
+                Loading comparison...
+            </h3>
+
+            <p id="overallResultDescription">
+                Comparing contract versions against
+                configured playbook rules.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RISK IMPACT BY CLAUSE
+    ====================================================== -->
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    RISK IMPACT BY CLAUSE
+                </span>
+
+                <h3>
+                    Contract Change Analysis
+                </h3>
+
+            </div>
+
+
+            <span
+                id="comparisonResultCount"
+                class="count-badge"
+            >
+                0
+            </span>
+
+        </div>
+
+
+        <div
+            id="comparisonResults"
+            class="comparison-results-list"
+        >
+
+            <div class="comparison-loading">
+                Loading comparison...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REGRESSION ALERT
+    ====================================================== -->
+
+    <section
+        id="regressionSection"
+        class="card regression-card hidden"
+    >
+
+        <div class="regression-header">
+
+            <div class="regression-icon">
+                !
+            </div>
+
+            <div>
+
+                <span class="card-label">
+                    NEGOTIATION IMPACT
+                </span>
+
+                <h3>
+                    Regression Detected
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="regressionContent"
+            class="regression-content"
+        >
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         UNCHANGED CLAUSES
+    ====================================================== -->
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="card-label">
+                    STABLE REQUIREMENTS
+                </span>
+
+                <h3>
+                    Unchanged Clauses
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="unchangedClauses"
+            class="unchanged-list"
+        >
+
+            <div class="comparison-loading">
+                Loading...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <section class="comparison-actions">
+
+        <a
+            href="index.html"
+            class="secondary-button"
+            style="text-decoration:none;"
+        >
+            ← Back to Dashboard
+        </a>
+
+
+        <a
+            href="upload.html"
+            class="primary-button"
+            style="text-decoration:none;"
+        >
+            Analyze Another Contract
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            ClauseGuard AI
+        </span>
+
+        <span>
+            Evidence-grounded contract change intelligence
+        </span>
+
+    </footer>
+
+</main>
+
+
+<script src="auth-guard.js"></script>
+<script src="comparison.js"></script>
+
+</body>
+
+</html>

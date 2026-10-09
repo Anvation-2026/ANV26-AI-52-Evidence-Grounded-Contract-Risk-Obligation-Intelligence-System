@@ -1,0 +1,134 @@
+{
+  "dataset_name": "CRI Synthetic Rule Classification Benchmark",
+  "version": "1.0",
+  "purpose": "Small deterministic smoke benchmark for known-answer playbook behavior, not a claim of real-world legal accuracy.",
+  "cases": [
+    {
+      "id": "PAY-STD-30",
+      "rule_id": "PAYMENT-001",
+      "expected": "STANDARD",
+      "clause": {
+        "clause_number": "4.1",
+        "clause_title": "Payment",
+        "clause_text": "Customer shall pay valid invoices within 30 days of receipt."
+      }
+    },
+    {
+      "id": "PAY-RISK-60",
+      "rule_id": "PAYMENT-001",
+      "expected": "RISKY",
+      "clause": {
+        "clause_number": "4.2",
+        "clause_title": "Payment",
+        "clause_text": "Customer shall pay invoices within 60 days of receipt."
+      }
+    },
+    {
+      "id": "PAY-AMBIG-PROMPTLY",
+      "rule_id": "PAYMENT-001",
+      "expected": "AMBIGUOUS",
+      "clause": {
+        "clause_number": "4.3",
+        "clause_title": "Payment",
+        "clause_text": "Customer shall pay promptly after receiving the invoice."
+      }
+    },
+    {
+      "id": "TERM-STD-30",
+      "rule_id": "TERMINATION-001",
+      "expected": "STANDARD",
+      "clause": {
+        "clause_number": "6.1",
+        "clause_title": "Termination",
+        "clause_text": "Either party may terminate for convenience with 30 days written notice."
+      }
+    },
+    {
+      "id": "TERM-RISK-7",
+      "rule_id": "TERMINATION-001",
+      "expected": "RISKY",
+      "clause": {
+        "clause_number": "6.2",
+        "clause_title": "Termination",
+        "clause_text": "Either party may terminate with 7 days written notice."
+      }
+    },
+    {
+      "id": "LIAB-RISK-NOCAP",
+      "rule_id": "LIABILITY-001",
+      "expected": "RISKY",
+      "clause": {
+        "clause_number": "8.1",
+        "clause_title": "Limitation of Liability",
+        "clause_text": "Each party may be liable for direct losses caused by its breach."
+      }
+    },
+    {
+      "id": "DATA-MISSING",
+      "rule_id": "DATA-001",
+      "expected": "MISSING",
+      "clause": {
+        "clause_number": "1",
+        "clause_title": "Scope",
+        "clause_text": "Supplier will provide support services for the platform."
+      }
+    },
+    {
+      "id": "DATA-AMBIG-HEADING",
+      "rule_id": "DATA-001",
+      "expected": "AMBIGUOUS",
+      "clause": {
+        "clause_number": "10.1",
+        "clause_title": "Data Protection",
+        "clause_text": "The parties acknowledge the importance of personal data and privacy."
+      }
+    },
+    {
+      "id": "LIAB-STD-CAP",
+      "rule_id": "LIABILITY-001",
+      "expected": "STANDARD",
+      "clause": {
+        "clause_number": "8.2",
+        "clause_title": "Liability",
+        "clause_text": "Aggregate liability shall not exceed $100,000 for all claims under this agreement."
+      }
+    },
+    {
+      "id": "IP-AMBIG-HEADING",
+      "rule_id": "IP-001",
+      "expected": "AMBIGUOUS",
+      "clause": {
+        "clause_number": "11.1",
+        "clause_title": "Intellectual Property",
+        "clause_text": "The parties acknowledge that intellectual property is important."
+      }
+    },
+    {
+      "id": "INDEMNITY-STD",
+      "rule_id": "INDEMNIFICATION-001",
+      "expected": "STANDARD",
+      "clause": {
+        "clause_number": "12.1",
+        "clause_title": "Indemnification",
+        "clause_text": "Supplier shall indemnify and hold harmless Customer from third-party claims arising from Supplier's breach."
+      }
+    },
+    {
+      "id": "PAY-CONFLICT",
+      "rule_id": "PAYMENT-001",
+      "expected": "CONFLICTING",
+      "clauses": [
+        {
+          "clause_number": "4.1",
+          "clause_title": "Payment",
+          "clause_text": "Invoices are payable within 30 days."
+        },
+        {
+          "clause_number": "9.2",
+          "clause_title": "Payment exception",
+          "clause_text": "All invoices must be paid within 60 days."
+        }
+      ]
+    }
+  ]
+}

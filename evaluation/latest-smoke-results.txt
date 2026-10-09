@@ -1,0 +1,25 @@
+Benchmark: CRI Synthetic Rule Classification Benchmark v1.0
+Cases: 12 | Exact status matches: 12 | Accuracy: 100.0%
+
+Per-case results:
+  PASS PAY-STD-30: expected=STANDARD, predicted=STANDARD
+  PASS PAY-RISK-60: expected=RISKY, predicted=RISKY
+  PASS PAY-AMBIG-PROMPTLY: expected=AMBIGUOUS, predicted=AMBIGUOUS
+  PASS TERM-STD-30: expected=STANDARD, predicted=STANDARD
+  PASS TERM-RISK-7: expected=RISKY, predicted=RISKY
+  PASS LIAB-RISK-NOCAP: expected=RISKY, predicted=RISKY
+  PASS DATA-MISSING: expected=MISSING, predicted=MISSING
+  PASS DATA-AMBIG-HEADING: expected=AMBIGUOUS, predicted=AMBIGUOUS
+  PASS LIAB-STD-CAP: expected=STANDARD, predicted=STANDARD
+  PASS IP-AMBIG-HEADING: expected=AMBIGUOUS, predicted=AMBIGUOUS
+  PASS INDEMNITY-STD: expected=STANDARD, predicted=STANDARD
+  PASS PAY-CONFLICT: expected=CONFLICTING, predicted=CONFLICTING
+
+Per-class precision / recall / F1 (labels with no predictions are reported as 0):
+  AMBIGUOUS: precision=100.0%, recall=100.0%, f1=100.0%
+  CONFLICTING: precision=100.0%, recall=100.0%, f1=100.0%
+  MISSING: precision=100.0%, recall=100.0%, f1=100.0%
+  RISKY: precision=100.0%, recall=100.0%, f1=100.0%
+  STANDARD: precision=100.0%, recall=100.0%, f1=100.0%
+
+LIMITATION: Small synthetic dataset, hand-authored expected labels, and narrow rules. Do not present this score as production or general legal accuracy.

@@ -1,0 +1,19 @@
+SYNTHETIC DEMO CONTRACT — NOT LEGAL ADVICE
+
+1. PAYMENT
+Customer shall pay each valid invoice within 60 days of receipt.
+
+2. TERMINATION
+Either party may terminate this agreement with 7 days written notice.
+
+3. CONFIDENTIALITY
+Each party shall protect the other party’s confidential information.
+
+4. LIMITATION OF LIABILITY
+Each party may be liable for losses arising from this agreement. No monetary cap is stated in this clause.
+
+5. PAYMENT EXCEPTION
+Notwithstanding Section 1, all undisputed invoices shall be paid within 30 days.
+
+6. GOVERNING LAW
+This agreement shall be governed by the laws of Example State.

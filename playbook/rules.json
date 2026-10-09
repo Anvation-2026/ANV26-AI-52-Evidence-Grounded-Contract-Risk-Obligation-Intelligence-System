@@ -1,0 +1,60 @@
+{
+  "rules": [
+    {
+      "rule_id": "PAYMENT-001",
+      "category": "Payment",
+      "requirement": "Payment terms must not exceed 30 days",
+      "severity": "HIGH",
+      "description": "The contract should require payment within 30 days."
+    },
+    {
+      "rule_id": "TERMINATION-001",
+      "category": "Termination",
+      "requirement": "Termination notice must be at least 30 days",
+      "severity": "HIGH",
+      "description": "Either party should provide at least 30 days written notice for termination."
+    },
+    {
+      "rule_id": "LIABILITY-001",
+      "category": "Liability",
+      "requirement": "A liability cap must be explicitly defined",
+      "severity": "HIGH",
+      "description": "The agreement should explicitly define a limitation of liability."
+    },
+    {
+      "rule_id": "INDEMNIFICATION-001",
+      "category": "Indemnification",
+      "requirement": "An indemnification clause must be present",
+      "severity": "MEDIUM",
+      "description": "The agreement should contain an indemnification provision."
+    },
+    {
+      "rule_id": "CONFIDENTIALITY-001",
+      "category": "Confidentiality",
+      "requirement": "A confidentiality clause must be present",
+      "severity": "HIGH",
+      "description": "The agreement should contain confidentiality obligations."
+    },
+    {
+      "rule_id": "IP-001",
+      "category": "IP Ownership",
+      "requirement": "IP ownership must be explicitly defined",
+      "severity": "HIGH",
+      "description": "The agreement should clearly specify ownership of intellectual property."
+    },
+    {
+      "rule_id": "DATA-001",
+      "category": "Data Protection",
+      "requirement": "Data protection obligations must be defined",
+      "severity": "MEDIUM",
+      "description": "The agreement should define applicable data protection responsibilities."
+    },
+    {
+      "rule_id": "GOVERNING-LAW-001",
+      "category": "Governing Law",
+      "requirement": "Governing law must be specified",
+      "severity": "MEDIUM",
+      "description": "The agreement should specify the governing law and jurisdiction."
+    }
+  ]
+}
